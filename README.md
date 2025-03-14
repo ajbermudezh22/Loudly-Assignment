@@ -25,16 +25,20 @@ and librosa also has a function called "librosa.display.waveshow" which will dis
 Finally I assigned the y-imits of the plot (-1, 1), marked the beats in red and displayed te waveform in orange. Also assigned the title and lables for the x and y axis.
 I got an error when first doing this:
 
+```sh
 TypeError: unsupported format string passed to numpy.ndarray.__format__
+```
 
 After investigating, I found that tempo was being returned as a NumPy array instead of a single float. The error occurred because I attempted to format it using :.2f, which only works with scalar values (like int or float).
 To fix this, I extracted the scalar value from the array using .item():
 
+```python
 print(f"Estimated tempo: {tempo.item():.2f} beats per minute")
+```
 
 With this the code compiled and I was able to show the results:
 
-![Waveform Visualization](Waveform of Audio Signal with Beat Positions.png)
+![Waveform Visualization](Waveform_plot.png)
 
 
 ## What other musical aspects would be interesting to analyze?
